@@ -12,6 +12,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Vuex from 'vuex'
 import store from './store';
 import myAxios from './axios'
+import 'default-passive-events'
 
 import '../src/assets/css/reset.css'
 

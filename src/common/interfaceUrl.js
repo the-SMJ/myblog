@@ -11,8 +11,12 @@ let interfaceUrl = {
   ip: 'http://localhost:9090',
 
   //nginx图片服务器的地址
-  imageIp: 'http://1.15.135.190'
+  imageIp: 'http://1.15.135.190',
 
+  getAllArticle: "/api/article/all",
+
+  
+  
 
 }
 

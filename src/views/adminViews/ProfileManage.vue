@@ -20,8 +20,20 @@
       return{
         
       }
-    }
+    },
     
+    methods: {
+      init(){
+        this.myAxios({
+          url: "",
+          method: "GET",
+        }).then(res => {
+
+        }).catch(err =>{
+          
+        })
+      }
+    },
   }
 </script>
 <style scoped>

@@ -78,7 +78,11 @@
           >
             <span>管理页面</span>
           </div>
-          <div class="search-box"><i class="el-icon-search"></i></div>
+          <div class="search-box">
+            <i class="el-icon-search"
+              @click="onSearch"
+            ></i>
+          </div>
         </div>
         
       </div>
@@ -136,6 +140,13 @@
       
       login() {
         this.$refs.loginDialog.show();
+      },
+      onSearch(){
+        this.$message({
+          message: '搜索功能还在开发...(  在做了在做了, 已经建好文件夹了_(:3」∠)_     )',
+          
+          offset: "70"
+        })
       }
     
     },
