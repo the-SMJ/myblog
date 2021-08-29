@@ -9,31 +9,28 @@
   <div id="ArticleBox">
     <div class="wrap">
       <div class="blur-img">
-        <img src="../assets/img/eod3pr.png" alt="">
+        <img :src="renderData.avatar" alt="">
       </div>
       <div class="article-img">
-        <img src="../assets/img/eod3pr.png" alt="">
+        <img :src="renderData.avatar" alt="" @click="$router.push('/article-detail/' + renderData.id)">
       </div>
       <div class="article-info">
         <div class="article-info-head">
           <div class="article-time">
-            <span>📅2021-06-09</span>
+            <span>📅{{createTime}}</span>
           </div>
           <div class="views-tag">
             <span>
-              👣111阅读
+              👣{{renderData.views}}
             </span>
-            <span>📖学习笔记</span>
+            <span>{{tagList[renderData.tagid-1]}}</span>
           </div>
         </div>
         <h1 class="article-title">
-          标题标题标题标题标题标题标题标题标题标题标题
+          {{renderData.title}}
         </h1>
         <div class="article-introduction">
-          文章简介文章简介文章简介文章简介文章简介
-          文章简介文章简介文章简介文章简介文章简介
-          文章简介文章简介文章简介文章简介
-          文章简介文章简介文章简介文章简介
+          {{renderData.introduction}}
         </div>
       </div>
     </div>
@@ -41,14 +38,31 @@
 </template>
 
 <script>
+import dateFormat from '@/common/dateFormat'
   export default {
     name: 'ArticleBox',
 
+    props: ['data'],
     data(){
       return {
-
+        renderData: this.data,
+        createTime: dateFormat("YY-mm-dd HH:MM", new Date(this.data.createTime)),
+        tagList: [
+          "🔥随笔",
+          "📖学习笔记",
+        ]
       }
+
     },
+
+    methods: {
+      
+    },
+    
+    created() {
+      console.log(this.renderData);
+    },
+    
     
 
 

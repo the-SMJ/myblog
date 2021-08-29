@@ -9,14 +9,10 @@
 <template>
   <div id="Home">
     <div class="wrap">
-      <div class="article-box-wrap">
-      <ArticleBox class="article-box"></ArticleBox>
-      <ArticleBox class="article-box"></ArticleBox>
-      <ArticleBox class="article-box"></ArticleBox>
-      <ArticleBox class="article-box"></ArticleBox>
-      <ArticleBox class="article-box"></ArticleBox>
-
-    </div>
+      <div class="article-box-wrap"
+      v-for="(item, index) in dataList" :key="index">
+        <ArticleBox class="article-box" :data="item"></ArticleBox>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +20,8 @@
 <script>
 import ArticleBox from '../components/ArticleBox.vue';
 import TopNavMenu from '../components/TopNavMenu.vue';
-
+import interfaceUrl from '@/common/interfaceUrl';
+import ArticleDetail from '@/views/ArticleDetail'
   export default {
 
     name: 'Home',
@@ -32,11 +29,27 @@ import TopNavMenu from '../components/TopNavMenu.vue';
 
     components: { 
       TopNavMenu, 
-      ArticleBox
+      ArticleBox,
+      
     },
     data(){
-      return {};
+      return {
+        dataList: [],
+      };
     },
+    created(){
+      this.myAxios({
+        url: interfaceUrl.getAllArticle,
+        method: "GET",
+      }).then(res => {
+        this.dataList = res.data.data
+        console.log(this.dataList);
+
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+    
   }
 </script>
 <style scoped>

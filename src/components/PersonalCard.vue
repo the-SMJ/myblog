@@ -13,10 +13,10 @@
       </div>
 
       <div class="avatar">
-          <img src="../assets/img/avatar.jpg" alt="">
+          <img :src="renderData.avatar" alt="">
       </div>
-      <div class="jottings">
-        <span class="text">如果生活太难, 那就祝你下班快乐</span>
+      <div class="signature">
+        <span class="text">{{renderData.signature}}</span>
       </div>
       <div class="other-info">
         <div class="article-count">文章150</div>
@@ -30,6 +30,11 @@
 
   export default {
     name: 'PersonalCard',
+    data() {
+      return{
+        renderData: this.$store.state.loginData,
+      }
+    }
 
   }
 </script>
@@ -70,8 +75,8 @@
     
   }
 
-  .jottings{
-    font-size: 10px;
+  .signature{
+    font-size: 13px;
     font-weight: bold;
     width: 72%;
     height: 30px;

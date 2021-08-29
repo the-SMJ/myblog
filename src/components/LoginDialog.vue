@@ -68,7 +68,7 @@ import { mapMutations } from "vuex";
         this.dialogFormVisible = false;
         this.myAxios({
           url: '/api/user/login',
-          method: "POST",
+          method: "GET",
           params: {
             username: this.form.username,
             password: this.form.password
@@ -77,7 +77,7 @@ import { mapMutations } from "vuex";
         }).then(res =>{
           if(res.data.code == 0){
             console.log("登录成功");
-            console.log(res.data.data[0].uid); //uid
+            console.log(res.data.data); //uid
             setUserVoucher(res)
             let loginData = updateLogin();
             this.updateLoginData(loginData.loginData);

@@ -6,7 +6,7 @@
 -->
 <template>
   <div id="app">
-    <TopNavMenu v-show="$router.path !== '/admin/*'"></TopNavMenu>
+    <TopNavMenu></TopNavMenu>
     <router-view/>
   </div>
 </template>
@@ -40,9 +40,9 @@ export default {
   created(){
     // 这段代码主要是在Vue实例更新后重新获取session中的数据, 判断是否已经登录
     let loginData = updateLogin();
-    
     this.updateLoginData(loginData.loginData);
     this.updateIsLogin(loginData.isLogin);
+
   }
   
 }
@@ -104,6 +104,9 @@ export default {
     --bs-info_opacity_2: rgba(23, 162, 184, 0.2);
   }
 
+  .display-flex{
+    display: flex;
+  }
 
 
 </style>

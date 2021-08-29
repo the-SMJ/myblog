@@ -67,7 +67,7 @@
         <div class="top-text-M text">THESMJ</div>
         <div class="main-right">
           <div class="login text" 
-            v-if="!$store.state.isLogin"
+            v-if="!isLogin"
             @click="login"
           >
             <span>登录</span>
@@ -105,13 +105,15 @@
       let clientWidth = document.documentElement.clientWidth;
       
       return{
-          
-          drawer: false,
+        
+        drawer: false,
       };
     },
 
     computed: {
-      
+      isLogin(){
+        return this.$store.state.isLogin;
+      }
     },
 
     methods: {

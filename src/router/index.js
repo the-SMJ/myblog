@@ -12,8 +12,10 @@ import Home from '@/views/Home'
 const MessageBoard = () => import('@/views/MessageBoard')
 const About = () => import('@/views/About')
 const Admin = () => import('@/views/Admin')
+const ArticleDetail = () => import('@/views/ArticleDetail')
 const ArticleManage = () => import('@/views/adminViews/ArticleManage')
 const ProfileManage = () => import('@/views/adminViews/ProfileManage')
+
 Vue.use(VueRouter)
 
 
@@ -75,6 +77,13 @@ const routes = [
       
     
     
+  },
+  
+  //文章详情
+  {
+    path: '/article-detail/:articleId',
+    props: true,
+    component: ArticleDetail,
   }
 
 ]

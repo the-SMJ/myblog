@@ -90,8 +90,6 @@ import E from "wangeditor"
     methods: {
       
       onSubmit(){
-        console.log("------form: ");
-        console.log(this.form);
         let _self = this;
         this.myAxios({
         
@@ -100,10 +98,14 @@ import E from "wangeditor"
           data: _self.form,
           
         }).then(res => {
-          console.log(res);
-        }).catch(err => {
-          console.log(err);
-        })
+            this.$message({
+              message: '发布成功!',
+              type: "success",
+              offset: "70"
+            })
+          }).catch(err => {
+            console.log(err);
+          })
       },
 
       initEditor(){
@@ -111,7 +113,7 @@ import E from "wangeditor"
         this.editor = new E(this.$refs.editor);
         
         this.editor.config.onchange = (newHtml) => {
-        this.form.content = newHtml
+          this.form.content = newHtml
         }
         this.editor.config.zIndex = 100
         this.editor.config.uploadImgServer = '/api/article/fileUpload'

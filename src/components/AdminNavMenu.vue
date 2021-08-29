@@ -32,7 +32,6 @@
 
     methods: {
       handleSelect(index){
-        console.log(index);
         if(index == "1"){
           this.$router.push("/admin/article-manage")
           
