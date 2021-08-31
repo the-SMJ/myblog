@@ -29,13 +29,14 @@
             <span>💬页面评论</span>
           </div>
           <hr class="line">
-
+          <InputBox></InputBox>
         </div>
         
       </div>
       <div class="aside-wrap">
         
         <PersonalCard></PersonalCard>
+        
       </div>      
 
     </div>
@@ -48,11 +49,12 @@
 <script>
 import BulletinBoard from '../components/BulletinBoard.vue'
 import PersonalCard from '../components/PersonalCard.vue'
-
+import InputBox from '@/components/InputBox'
   export default {
     components: {
      BulletinBoard,
      PersonalCard,
+     InputBox,
     },
     name: 'MessageBoard',
     data(){

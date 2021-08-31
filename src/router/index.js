@@ -86,8 +86,7 @@ const routes = [
         path: 'article-manage',
         component: ArticleManage,
         meta: {
-          needLogin: true,
-          
+          needLogin: true,         
         }
       },
       {
@@ -95,7 +94,6 @@ const routes = [
         component: ProfileManage,
         meta: {
           needLogin: true,
-          
         }
       },
       {
@@ -103,10 +101,24 @@ const routes = [
         component: () => import('@/views/adminViews/ArticleEditor'),
         meta: {
           needLogin: true,
-          
         }
+      },
 
+      {
+        path: 'comment-pending',
+        component: () => import('@/views/adminViews/CommentPending'),
+        meta: {
+          needLogin: true,
+        },
+      },
+      {
+        path: 'comment-manage',
+        component: () => import('@/views/adminViews/CommentManage'),
+        meta: {
+          needLogin: true,
+        },
       }
+
     ]
       
     

@@ -12,6 +12,9 @@
     <el-tab-pane label="文章管理" name="0"></el-tab-pane>
     <el-tab-pane label="资料设置" name="1"></el-tab-pane>
     <el-tab-pane label="添加文章" name="2"></el-tab-pane>
+    <el-tab-pane label="留言审核" name="3"></el-tab-pane>
+    <el-tab-pane label="留言管理" name="4"></el-tab-pane>
+
   </el-tabs>
 </div>
 </template>
@@ -21,27 +24,28 @@
     name: 'AdminNavMenu',
     
     data(){
-
       return{
-        //存储当前所在的路由
-        activeIndex: "1",
-
-
       }
     },
 
     methods: {
       handleClick(item){
-        console.log(item.index);
         let index = item.index;
         if(index == "0"){
           this.$router.push("/admin/article-manage")
-          
+
         }else if(index == "1"){
           this.$router.push("/admin/profile-manage")
 
         }else if(index == "2"){
           this.$router.push('/admin/article-edit')
+
+        }else if(index == "3"){
+          this.$router.push('/admin/comment-pending')
+
+        }else if(index == "4"){
+          this.$router.push('/admin/comment-manage')
+          
         }
       }
     },

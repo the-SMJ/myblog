@@ -32,10 +32,20 @@ let interfaceUrl = {
 
   addArticleViews: "/api/article/addArticleViews",
   
+  // 提交评论审核接口
+  commentPendding: "/api/comment/addPendingComment",
+  // 评论审核通过接口
   
+  // 获取待审核评论
+  getPendingComment: "/api/comment/getPendingComment",
   
-  
+  // 删除待审核评论
+  deletePendingCommentByIdArray: "/api/comment/deletePendingCommentByIdArray",
+  acceptPendingCommentByIdArray: "/api/comment/acceptPendingCommentByIdArray",
 
+  // 获取已通过的可以展示的评论
+  getAcceptComment: "/api/comment/getAcceptComment",
+  deleteAcceptCommentByIdArray: "/api/comment/deleteAcceptCommentByIdArray"
 }
 
 export default interfaceUrl
