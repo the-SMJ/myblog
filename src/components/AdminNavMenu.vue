@@ -8,11 +8,11 @@
 <!--  -->
 <template>
 <div>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="1">文章管理</el-menu-item>
-    <el-menu-item index="2">资料设置</el-menu-item>
-    <el-menu-item index="3">添加文章</el-menu-item>
-  </el-menu>
+  <el-tabs  class="el-menu-demo" mode="horizontal" @tab-click="handleClick">
+    <el-tab-pane label="文章管理" name="0"></el-tab-pane>
+    <el-tab-pane label="资料设置" name="1"></el-tab-pane>
+    <el-tab-pane label="添加文章" name="2"></el-tab-pane>
+  </el-tabs>
 </div>
 </template>
 
@@ -31,14 +31,16 @@
     },
 
     methods: {
-      handleSelect(index){
-        if(index == "1"){
+      handleClick(item){
+        console.log(item.index);
+        let index = item.index;
+        if(index == "0"){
           this.$router.push("/admin/article-manage")
           
-        }else if(index == "2"){
+        }else if(index == "1"){
           this.$router.push("/admin/profile-manage")
 
-        }else if(index == "3"){
+        }else if(index == "2"){
           this.$router.push('/admin/article-edit')
         }
       }

@@ -20,11 +20,18 @@ let interfaceUrl = {
   
   getArticleById: "/api/article/getArticleById",
 
+  //根据文章标签id获取文章
+  getArticleByTagId: "/api/article/getArticleByTagId",
 
   // 根据登录的id获取用户信息
   getUserById: "/api/user/getUserById",
   //更新用户信息
   updateUser: "/api/user/updateUser",
+  
+  // 用户查看文章后, 增加views
+
+  addArticleViews: "/api/article/addArticleViews",
+  
   
   
   

@@ -1,16 +1,17 @@
 <!--
  * @Author: FX
- * @Date: 2021-08-09 16:01:34
- * @Description: 
- * @FilePath: \myblog\src\views\Home.vue
+ * @Date: 2021-08-30 21:43:04
+ * @Description: 学习笔记
+ * @FilePath: \myblog\src\views\StudyNote.vue
 -->
 
 <!--  -->
 <template>
-  <div id="Home">
+  <div id="StudyNote">
     <div class="wrap">
+      <div class="head-title">分类"🌈学习笔记"下的文章</div>
       <div class="article-box-wrap"
-      v-for="(item, index) in dataList" :key="index">
+        v-for="(item, index) in dataList" :key="index">
         <ArticleBox class="article-box" :data="item"></ArticleBox>
       </div>
     </div>
@@ -24,7 +25,7 @@ import interfaceUrl from '@/common/interfaceUrl';
 import ArticleDetail from '@/views/ArticleDetail'
   export default {
 
-    name: 'Home',
+    name: 'StudyNote',
 
 
     components: { 
@@ -39,10 +40,15 @@ import ArticleDetail from '@/views/ArticleDetail'
     },
     created(){
       this.myAxios({
-        url: interfaceUrl.getAllArticle,
+        url: interfaceUrl.getArticleByTagId,
         method: "GET",
+        params: {
+          tagId: 2,
+        }
       }).then(res => {
         this.dataList = res.data.data
+        console.log(this.dataList);
+
       }).catch(err => {
         console.log(err);
       })
@@ -57,7 +63,11 @@ import ArticleDetail from '@/views/ArticleDetail'
       padding-top: 70px;
       background-color: #F8F9FA;
     }
-
+    .head-title{
+      font-size: 40px;
+      text-align: center;
+      margin: 30px 0;
+    }
     .article-box-wrap{
       width: 925px;
       margin: 0 auto;
@@ -74,9 +84,7 @@ import ArticleDetail from '@/views/ArticleDetail'
       padding-top: 20px;
       background-color: #F8F9FA;
     }
-    .article-box-wrap{
-      
-    }
+
     .article-box{
       margin-bottom: 3vh;
     }

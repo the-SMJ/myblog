@@ -27,13 +27,31 @@
 </template>
 
 <script>
-
+import interfaceUrl from '@/common/interfaceUrl'
   export default {
     name: 'PersonalCard',
     data() {
       return{
         renderData: this.$store.state.loginData,
       }
+    },
+    methods: {
+      init(){
+        this.myAxios({
+          url: interfaceUrl.getUserById,
+          method: "GET",
+          params: {
+            id: 1,
+          }
+        }).then(res => {
+          this.renderData = res.data.data;
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+    },
+    created(){
+      this.init();
     }
 
   }
@@ -78,7 +96,7 @@
   .signature{
     font-size: 13px;
     font-weight: bold;
-    width: 72%;
+    width: 90%;
     height: 30px;
     margin: 40px auto 0;
     text-align: center;

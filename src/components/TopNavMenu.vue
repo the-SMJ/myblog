@@ -20,8 +20,8 @@
             <span class="text">✨随笔&日常</span><i class="el-icon-arrow-down"></i>
             <div class="main-left-essay-daily-dropdown">
               <ul class="dropdown">
-                <li @click="$router.push('/home')"><span>🔥随笔</span></li>
-                <li @click="$router.push('/home')"><span>🌈学习笔记</span></li>
+                <li @click="$router.push('/daily')"><span>🔥随笔</span></li>
+                <li @click="$router.push('/study-note')"><span>🌈学习笔记</span></li>
               </ul>
             </div>
           </div>
@@ -63,7 +63,7 @@
 
           </el-drawer>
         </div>
-        <div class="top-text text">test</div>
+        <div class="top-text text">相逢的人会再相逢</div>
         <div class="top-text-M text">THESMJ</div>
         <div class="main-right">
           <div class="login text" 

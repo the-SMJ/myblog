@@ -24,23 +24,53 @@ const routes = [
   {
     path: '',
     redirect: '/home',
+    meta: {
+      
+    }
   },
 
   // 主页
   {
     path: '/home',
     component: Home,
+    meta: {
+      
+    }
   },
   
   // 留言板
   {
     path: '/messageboard',
     component: MessageBoard,
+    meta: {
+      
+    }
   },
+
+  //随笔日常
+  {
+    path: "/daily",
+    component: () => import('@/views/Daily'),
+    meta: {
+      
+    }
+  },
+  // 学习笔记
+  {
+    path: "/study-note",
+    component: () => import('@/views/StudyNote'),
+    meta: {
+      
+    }
+  },
+
   // 关于
   {
     path: '/about',
     component: About,
+    meta: {
+      keepAlive: true,
+    }
   },
   // admin
   {
@@ -49,6 +79,7 @@ const routes = [
     component: Admin,
     meta: {
       needLogin: true,
+      
     },
     children: [
       {
@@ -56,6 +87,7 @@ const routes = [
         component: ArticleManage,
         meta: {
           needLogin: true,
+          
         }
       },
       {
@@ -63,6 +95,7 @@ const routes = [
         component: ProfileManage,
         meta: {
           needLogin: true,
+          
         }
       },
       {
@@ -70,6 +103,7 @@ const routes = [
         component: () => import('@/views/adminViews/ArticleEditor'),
         meta: {
           needLogin: true,
+          
         }
 
       }

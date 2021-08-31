@@ -25,6 +25,7 @@
 
 
 <style lang="less" scoped>
+// 手机
 @media screen and(max-width:630px){
   #BulletinBoard{
     border: 1px solid #e9ecef;
@@ -32,7 +33,7 @@
     min-height: 5rem;
     border-radius: 8px;
     color: var(--bs-dark);
-    padding: 2rem;
+    padding: 1rem;
     word-break: break-all;
     
   }
@@ -48,8 +49,9 @@
   
 </style>
 
-// 网页端
+
 <style scoped>
+/* 网页端 */
   @media screen and (min-width: 631px){
     #BulletinBoard{
       border: 1px solid #e9ecef;
@@ -67,8 +69,5 @@
       margin: 25px 0;
     }
 
-    .content{
-      font-size: 15px;
-    }
   }
 </style>

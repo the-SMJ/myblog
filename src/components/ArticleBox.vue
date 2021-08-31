@@ -26,10 +26,10 @@
             <span>{{tagList[renderData.tagid-1]}}</span>
           </div>
         </div>
-        <h1 class="article-title">
+        <h1 class="article-title" @click="$router.push('/article-detail/' + renderData.id)">
           {{renderData.title}}
         </h1>
-        <div class="article-introduction">
+        <div class="article-introduction" @click="$router.push('/article-detail/' + renderData.id)">
           {{renderData.introduction}}
         </div>
       </div>
@@ -58,36 +58,32 @@ import dateFormat from '@/common/dateFormat'
     methods: {
       
     },
-    
-    created() {
-      console.log(this.renderData);
-    },
-    
-    
-
 
   }
 </script>
 
 
-// 手机端
-<style scoped lang="less">
 
-@media screen and(max-width:630px) {
-  .wrap{
-    
-    border: 1px solid red;
-    width: 100%;
-    height: 20vh;
-  }
-}
 
-</style>
 
-// 网页端
 <style scoped lang="less">
 @import url('../assets/font/font.css');
+// 网页端
 @media screen and(min-width:631px){
+
+  .article-img:hover, 
+  .article-title:hover, 
+  .article-introduction:hover{
+    cursor: pointer;
+    color: rgba(235, 235, 235);
+  }
+
+  
+  .article-title, 
+  .article-introduction{
+    transition: all 0.2s;
+  }
+
   .wrap{
     font-family: LXGW;
     width: 925px;
@@ -137,7 +133,6 @@ import dateFormat from '@/common/dateFormat'
     background-position-y: center;
     background-size: cover;
     transition: .3s ease-out;
-    cursor: pointer;
   }
 
   .article-img > img:hover{
@@ -181,6 +176,69 @@ import dateFormat from '@/common/dateFormat'
     line-height: 30px;
     margin: 30px 40px;
     
+  }
+}
+
+
+// 手机端
+@media screen and(max-width: 630px) {
+  .blur-img,
+  .article-time{
+    display: none;
+  }
+  .wrap{
+    
+    font-family: LXGW;
+    display: flex;
+    border: 1px solid #dfe7ee;
+    border-radius: 1vw;
+    height: 8.5rem;
+    width: 94vw;
+    
+    background-color: var(--bs-white);
+    color: var(--bs-dark);
+    
+  }
+  .article-img{
+
+    margin: auto 2vw;
+    
+  }
+  .article-img > img{
+    border-radius: 0.4rem;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    object-fit:cover
+    
+  }
+
+  .views-tag{
+    margin: 2.5vh 0vw 2vh 1vw;
+    width: 65vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .article-title{
+    width: 65vw;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    margin: 2vh 1vw;
+  }
+  
+  .article-introduction{
+    width: 60vw;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;   
+    margin: 2vh 1vw;
   }
 }
 </style>

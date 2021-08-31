@@ -7,7 +7,10 @@
 <template>
   <div id="app">
     <TopNavMenu></TopNavMenu>
-    <router-view/>
+    <!--  include的组件会被缓存, 路由切换时不再重复渲染 -->
+      <keep-alive include="Home,MessageBoard,About,ArticleEditor">
+        <router-view></router-view>
+      </keep-alive>
   </div>
 </template>
 <script>

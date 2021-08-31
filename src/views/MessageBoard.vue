@@ -18,35 +18,18 @@
               </h1>
             </template>
             <template v-slot:content>
-              <p> Say something?</p>
-              <p> Say something?</p>
-              <p> Say something?</p>
+              <p style="font-size: 20px">有啥想对我说的，来吧！！！</p>
             </template>
           </BulletinBoard>
         </div>
 
         <!-- 留言板块 -->
         <div class="comment-wrap">
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
-          <h1>留言板块</h1>
+          <div class="title">
+            <span>💬页面评论</span>
+          </div>
+          <hr class="line">
+
         </div>
         
       </div>
@@ -99,27 +82,66 @@ import PersonalCard from '../components/PersonalCard.vue'
     width: 62%;
     min-width: 1000px;
     margin: 0 auto;
-    padding-top: 70px;
+    padding-top: 100px;
   }
   
   .aside-wrap{
     width: 257px;
   }
+
+  .comment-wrap{
+    border: 1px solid #e9ecef;
+    background-color: var(--bs-white);
+    min-height: 5rem;
+    border-radius: 8px;
+    color: var(--bs-dark);
+    padding: 2rem;
+    margin-top: 30px;
+    width: 650px;     
+  }
+
+
+  .title{
+    font-size: 15px;
+  }
+
+  .line{
+    margin: 20px 0;
+  }  
 }
 
 
 </style>
 
-//  手机端
+
 <style lang="less" scoped>
+// 手机
  @media screen and (max-width: 630px) {
-   .aside-wrap{
-     display: none;
-   }
+    .aside-wrap{
+      display: none;
+    }
 
-   .wrap{
-    padding-top: 2vw; 
+    .wrap{
+      padding-top: 2vw; 
 
-   }
+    }
+
+    .comment-wrap{
+      border: 1px solid #e9ecef;
+      background-color: var(--bs-white);
+      color: var(--bs-dark);     
+      margin-top: 2vh; 
+      padding: 1rem;
+    }
+
+    .title{
+      font-size: 0.8rem;
+    }
+
+    .line{
+      margin: 2.4vh 0;
+    }
  } 
+
+
 </style>
