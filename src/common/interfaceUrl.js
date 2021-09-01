@@ -17,12 +17,13 @@ let interfaceUrl = {
   getAllArticle: "/api/article/all",
 
   //根据文章id获取文章详细内容
-  
   getArticleById: "/api/article/getArticleById",
 
   //根据文章标签id获取文章
   getArticleByTagId: "/api/article/getArticleByTagId",
 
+  // 根据uid获取文章数目
+  getArticleNumByUid: "/api/article/getArticleNumByUid",
   // 根据登录的id获取用户信息
   getUserById: "/api/user/getUserById",
   //更新用户信息
@@ -45,7 +46,9 @@ let interfaceUrl = {
 
   // 获取已通过的可以展示的评论
   getAcceptComment: "/api/comment/getAcceptComment",
-  deleteAcceptCommentByIdArray: "/api/comment/deleteAcceptCommentByIdArray"
+  deleteAcceptCommentByIdArray: "/api/comment/deleteAcceptCommentByIdArray",
+  //获取评论数目
+  getAcceptCommentNum: "/api/comment/getAcceptCommentNum"
 }
 
 export default interfaceUrl

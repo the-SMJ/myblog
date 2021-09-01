@@ -19,8 +19,8 @@
         <span class="text">{{renderData.signature}}</span>
       </div>
       <div class="other-info">
-        <div class="article-count">文章150</div>
-        <div class="comment-count">评论10</div>
+        <div class="article-count">文章 {{articleNum}}</div>
+        <div class="comment-count">评论 {{commentNum}}</div>
       </div>
     </div>
   </div>
@@ -33,6 +33,8 @@ import interfaceUrl from '@/common/interfaceUrl'
     data() {
       return{
         renderData: this.$store.state.loginData,
+        articleNum: null,
+        commentNum: null,
       }
     },
     methods: {
@@ -48,6 +50,34 @@ import interfaceUrl from '@/common/interfaceUrl'
         }).catch(err => {
           console.log(err);
         })
+        
+        this.getArticleNum();
+        this.getCommentNum();
+      },
+
+      getArticleNum(){
+        this.myAxios({
+          url: interfaceUrl.getArticleNumByUid,
+          method: "GET",
+          params: {
+            uid: 1,
+          }
+        }).then(res => {
+          this.articleNum = res.data.data;
+        }).catch(err => {
+          console.log(err);
+        })        
+      },
+      getCommentNum(){
+        this.myAxios({
+          url: interfaceUrl.getAcceptCommentNum,
+          method: "GET",
+        }).then(res => {
+          
+          this.commentNum = res.data.data;
+        }).catch(err => {
+          console.log(err);
+        })          
       }
     },
     created(){

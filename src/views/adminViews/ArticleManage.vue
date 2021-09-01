@@ -69,9 +69,20 @@
           @click="handleDelete(scope.$index, scope.row)">删除</el-button>
       </template>
     </el-table-column>
-    
-
   </el-table>
+  <div class="pageination">
+      <el-pagination
+        background
+        layout="total,sizes, prev, pager, next,jumper"
+        :total="total"
+        :page-size="pageSize"
+        :page-sizes="[5, 10, 20]"
+        @size-change="handleSizeChange"
+        :current-page="pageNum"
+        @current-change="handleCurrentChange"
+        >
+      </el-pagination>        
+  </div>  
   <div style="width: 100px; margin: 20px auto">
     <el-button @click="deleteSelected()">删除所选</el-button>
   </div>
@@ -90,10 +101,27 @@ import dateFormat from '@/common/dateFormat'
         dataList: [],
         search: '',
         selectedRow: [],
+        total: null,
+        pageNum: 1, // 初始时为第一页
+        pageSize: 5, //默认每页5条
       }
     },
 
     methods: {
+      // 页码发生变化时触发
+      handleCurrentChange(val){
+        // 设置当前页码
+        this.pageNum = val;
+        // 重新请求数据
+        this.getData(this.pageNum, this.pageSize)
+      },
+      // 每页条数发生变化时触发
+      handleSizeChange(val){
+        // 根据选定的值设置每页条数
+        this.pageSize = val;
+        // 重新请求数据
+        this.getData(this.pageNum, this.pageSize)
+      },      
       handleEdit(index, row){
         console.log(index);
         console.log(row);
@@ -130,22 +158,31 @@ import dateFormat from '@/common/dateFormat'
               type: 'success',
               offset: "70"
             });
-            this.init();
+            this.getData(this.pageNum, this.pageSize);
           console.log(res);
         }).catch(err => {
-            this.$message().error("删除失败!");
+            this.$message({
+              message: '删除失败!',
+              type: 'error',
+              offset: "70"
+            });
             console.log(err);
         })
         
 
       },
-      init(){
+      getData(pageNum, pageSize){
         // 创建时, 请求文章列表数据
         this.myAxios({
           url: interfaceUrl.getAllArticle,
           method: "GET",
+          params: {
+            pageNum: pageNum,
+            pageSize: pageSize
+          }
         }).then(res => {
-            this.dataList = res.data.data;
+            this.dataList = res.data.data.data;
+            this.total = res.data.data.total
           })
           .catch(err => {
             console.log(err);
@@ -155,7 +192,7 @@ import dateFormat from '@/common/dateFormat'
 
     created() {
       // 创建时, 请求文章列表数据
-      this.init();
+      this.getData(this.pageNum, this.pageSize);
     },
     
   }

@@ -45,18 +45,27 @@ import dateFormat from '@/common/dateFormat'
     props: ['data'],
     data(){
       return {
-        renderData: this.data,
+        renderData: null,
         createTime: dateFormat("YY-mm-dd HH:MM", new Date(this.data.createTime)),
         tagList: [
-          "🔥随笔",
+          "📝随笔",
           "📖学习笔记",
         ]
       }
 
     },
 
-    methods: {
-      
+    watch: {
+      data: {
+        immediate: true,
+        handler(newVal) {
+          this.renderData = newVal;
+        },
+        
+      }
+    },
+    mounted() {
+      this.renderData = this.data;
     },
 
   }

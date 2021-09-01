@@ -29,14 +29,51 @@
             <span>💬页面评论</span>
           </div>
           <hr class="line">
+
+          <!-- 留言列表 -->
+          <div class="comment-list">
+            <ul class="list">
+              <li class="list-item" 
+                v-for="(item, index) in dataList" 
+                :key="index"
+              
+                >
+                <div class="list-item-wrap">
+                  <div class="nickname">
+                    {{item.nickname}}
+                  </div>
+                  <div class="create-time">
+                    {{timeFormat(item.createTime)}}
+                  </div>
+                  <div class="content">
+                    {{item.content}}
+                  </div>
+                  
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="pageination">
+              <el-pagination
+                
+                layout="total, prev, pager, next"
+                :total="total"
+                small
+                :page-size="pageSize"
+                :page-sizes="[5, 10, 20]"
+                @size-change="handleSizeChange"
+                :current-page="pageNum"
+                @current-change="handleCurrentChange"
+                >
+              </el-pagination>        
+          </div>          
+          <!-- 输入框 -->
           <InputBox></InputBox>
         </div>
         
       </div>
       <div class="aside-wrap">
-        
         <PersonalCard></PersonalCard>
-        
       </div>      
 
     </div>
@@ -50,6 +87,8 @@
 import BulletinBoard from '../components/BulletinBoard.vue'
 import PersonalCard from '../components/PersonalCard.vue'
 import InputBox from '@/components/InputBox'
+import interfaceUrl from '@/common/interfaceUrl'
+import dateFormat from '@/common/dateFormat'
   export default {
     components: {
      BulletinBoard,
@@ -59,9 +98,76 @@ import InputBox from '@/components/InputBox'
     name: 'MessageBoard',
     data(){
       return {
-
+        dataList: [],
+        total: null,
+        pageNum: 1, // 初始时为第一页
+        pageSize: 5, //默认每页5条        
       }
     },
+
+    methods: {
+      getData(pageNum, pageSize){
+        // 创建时, 请求文章列表数据
+        this.myAxios({
+          url: interfaceUrl.getAcceptComment,
+          method: "GET",
+          params: {
+            pageNum: pageNum,
+            pageSize: pageSize, // 一页请求5条数据
+          }
+        }).then(res => {
+
+            if(res.data.code == 0){
+              this.dataList = res.data.data.data;
+              this.total = res.data.data.total;
+              console.log(this.dataList);
+            }else{
+              this.$message({
+                message: '获取留言列表失败',
+                type: "error",
+                offset: "70"
+              })              
+            }
+
+          })
+          .catch(err => {
+
+            this.$message({
+              message: '获取留言列表失败',
+              type: "error",
+              offset: "70"
+            })             
+            console.log(err);
+
+          })
+      },   
+      handleCurrentChange(val){
+        // 设置当前页码
+        this.pageNum = val;
+        // 重新请求数据
+        this.getData(this.pageNum, this.pageSize)
+      },
+      // 每页条数发生变化时触发
+      handleSizeChange(val){
+        // 根据选定的值设置每页条数
+        this.pageSize = val;
+        // 重新请求数据
+        this.getData(this.pageNum, this.pageSize)
+      },
+
+      timeFormat(createTime){
+        return dateFormat("YY年mm月dd日", new Date(createTime))
+      }   
+    },
+
+    computed: {
+
+    },
+
+
+    created(){
+      this.getData(this.pageNum, this.pageSize)
+    }
   }
 </script>
 <style lang="less" scoped>
@@ -110,6 +216,33 @@ import InputBox from '@/components/InputBox'
   .line{
     margin: 20px 0;
   }  
+
+  .list-item-wrap{
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin: 10px auto;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .nickname{
+    font-weight: 700;
+  }
+  
+  .create-time{
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 10px;
+    color: #b3b3b3;
+  }
+  .content{
+    margin-top: 30px;
+    white-space: pre-line;
+    margin-left: 20px;
+  }
+  .pageination{
+    width: 180px;
+    margin: 10px auto;
+  }
 }
 
 
@@ -143,6 +276,32 @@ import InputBox from '@/components/InputBox'
     .line{
       margin: 2.4vh 0;
     }
+    .list-item-wrap{
+      border: 1px solid #e9ecef;
+      border-radius: 1vw;
+      margin: 2vh auto;
+      padding: 2vw;
+      font-size: 1rem;
+    }
+    .nickname{
+      font-weight: 700;
+    }
+    
+    .create-time{
+      font-size: 0.6rem;
+      margin-top: 0.6vh;
+      margin-left: 2vw;
+      color: #b3b3b3;
+    }
+    .content{
+      margin-top: 2vh;
+      white-space: pre-line;
+      margin-left: 4vw;
+    }
+    .pageination{
+      width: 60%;
+      margin: 10px auto;
+    }    
  } 
 
 

@@ -7,7 +7,7 @@
 <!--  -->
 <template>
   <div>
-    <el-dialog title="登录" 
+    <el-dialog title="身份确认" 
       custom-class="login-dialog"
       :visible.sync="dialogFormVisible"
       :destroy-on-close="TRUE_"
@@ -82,9 +82,17 @@ import { mapMutations } from "vuex";
             let loginData = updateLogin();
             this.updateLoginData(loginData.loginData);
             this.updateIsLogin(loginData.isLogin)
-            
+            this.$message({
+              message: '登录成功',
+              type: "success",
+              offset: "70"
+            })                
           }else{
-            this.$message.error('用户名或密码错误(暂不开放注册)');
+              this.$message({
+                message: '账号或密码错误!',
+                type: "error",
+                offset: "70"
+              })    
 
           }
           

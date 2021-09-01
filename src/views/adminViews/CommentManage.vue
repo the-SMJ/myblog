@@ -94,7 +94,6 @@ import interfaceUrl from '@/common/interfaceUrl'
     data(){
       return {
         dataList: [],
-        search: '',
         selectedRow: [],
         total: null,
         pageNum: 1, // 初始时为第一页
@@ -120,7 +119,7 @@ import interfaceUrl from '@/common/interfaceUrl'
               this.total = res.data.data.total;
             }else{
               this.$message({
-                message: '获取审核留言列表失败',
+                message: '获取留言列表失败',
                 type: "error",
                 offset: "70"
               })              
@@ -130,7 +129,7 @@ import interfaceUrl from '@/common/interfaceUrl'
           .catch(err => {
 
             this.$message({
-              message: '获取审核留言列表失败',
+              message: '获取留言列表失败',
               type: "error",
               offset: "70"
             })             

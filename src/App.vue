@@ -8,7 +8,7 @@
   <div id="app">
     <TopNavMenu></TopNavMenu>
     <!--  include的组件会被缓存, 路由切换时不再重复渲染 -->
-      <keep-alive include="Home,MessageBoard,About,ArticleEditor">
+      <keep-alive include="Home,MessageBoard,About,ArticleEditor,Daily,StudyNote">
         <router-view></router-view>
       </keep-alive>
   </div>

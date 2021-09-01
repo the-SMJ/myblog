@@ -36,9 +36,9 @@
       </div>
 
     </div>
-    <hr>
-    <h1 class="other">
-      other
+    <hr class="line">
+    <h1 class="END">
+      END
     </h1>
   </div>
 </template>
@@ -151,6 +151,13 @@ import PersonalCard from '@/components/PersonalCard'
   .content{
     width: 805px;
     padding: 10px 0;
+  }
+  .line{
+    margin: 20px 0 0 0;
+  }
+  .END{
+    text-align: center;
+    margin: 10px 0 20px 0;
   }
 }
 

@@ -63,14 +63,14 @@
 
           </el-drawer>
         </div>
-        <div class="top-text text">相逢的人会再相逢</div>
+        <div class="top-text text"> </div>
         <div class="top-text-M text">THESMJ</div>
         <div class="main-right">
           <div class="login text" 
             v-if="!isLogin"
             @click="login"
           >
-            <span>登录</span>
+            <span>后台</span>
           </div>
           <div class="admin text"
              v-else
